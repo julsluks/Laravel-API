@@ -70,6 +70,11 @@ class TodoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return Todo::destroy($id);
+    }
+
+    public function search(string $title)
+    {
+        return Todo::where('title', 'like', '%'.$title.'%')->get();
     }
 }
