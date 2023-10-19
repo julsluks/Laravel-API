@@ -20,6 +20,7 @@ use App\Http\Controllers\AuthController;
 
 // Public routes
 Route::post("/register", [AuthController::class,"register"]);
+Route::post("/login", [AuthController::class,"login"]);
 Route::get('/todo', [TodoController::class, 'index']);
 Route::get('/todo/{id}', [TodoController::class, 'show']);
 Route::get("/todo/search/{title}", [TodoController::class,"search"]);
@@ -29,6 +30,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post("/todo", [TodoController::class,"store"]);
     Route::put("/todo/{id}", [TodoController::class,"update"]);
     Route::delete("/todo/{id}", [TodoController::class,"destroy"]);
+    Route::post("/logout", [AuthController::class,"logout"]);
 
 });
 
