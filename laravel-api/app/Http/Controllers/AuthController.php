@@ -42,7 +42,7 @@ class AuthController extends Controller
         //Check email
         $user = User::where('email', $fields['email'])->first();
 
-        //check password
+        //Check password
         if(!$user || !Hash::check($fields['password'], $user->password)){
             return response([
                 'message' => 'Credencials incorrectes'
@@ -60,7 +60,7 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request){
-        auth()->user()->tokens()->delete();
+        auth()->user()->User::tokens()->delete();
 
         return [
             'message'=> 'Logged out'
